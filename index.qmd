@@ -5,4 +5,16 @@ sidebar: false
 
 MUY660-İş Analitiği dersi sayfama hoş geldiniz.
 
-Bu analitik çalışmalarımızı paylaşıyorum.
+Merhaba ben Hande DOLAY. Burada analitik çalışmalarımı paylaşıyorum.
+
+![](images/linked.jpg){width="34"}
+
+<https://www.linkedin.com/in/hande-cebeci-8331a5157/>
+
+![](images/gggg.png){width="70"}
+
+<https://github.com/emu-hacettepe-analytics/muy665-bahar2026-HandeDolay>
+
+![](images/mail.avif){width="47"}
+
+cebeciiihande\@gmail.com
