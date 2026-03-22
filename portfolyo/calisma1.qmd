@@ -7,10 +7,82 @@ title: "Çalışma 1"
 
 Bu çalışmada 3 görevimiz var. Bu görevler..... Bunlara sırayla aşağıda cevap arıyoruz.
 
-## (a)
+# (a)
+
+Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler serisinin Kerem Demirtaş ile veri bilimi dünyasındaki pratik uygulamalar ve endüstri mühendisliğinin bu alandaki güçlü konumu ele alınmıştır. Konuşmanın temel odaklandığı noktalardan biri, endüstri mühendislerinin temel eğitimlerinden gelen analitik düşünme, süreç optimizasyonu ve sistem yaklaşımı becerilerinin, veri bilimi projelerinde ne kadar büyük bir rekabet avantajı sağladığıdır. Sadece kod yazmanın veya algoritma bilmenin ötesinde, iş problemini doğru tanımlamanın ve veriden elde edilen içgörüleri aksiyona dönüştürmenin kritik önemi vurgulanmıştır.
+
+#  (b)
+
+Veri biliminde endüstri mühendisliğinin önemi nedir?
+
+Endüstri mühendisleri aldıkları eğitim gereği problem tanımlama, veri analizi, optimizasyon alanlarında uzmanlaştıkları için veri biliminde bu alanları kullanarak karmaşık problemleri kolaylıkla çözebilmektedir.
 
 ```{r}
-1 + 1
+  
+library(dslabs)
+  
+data <- polls_us_election_2016
+
+my_first <- "Hande"
+my_birth_year <- 1998
+
+k <- (nchar(my_first) + my_birth_year) %% 15 + 8
+
+print(k)
+
+if (k %% 2 == 0) {
+  print("k sayısı bir çift sayıdır. İlk satırlar:")
+  head(data, k)
+} else {
+  print("k sayısı bir tek sayıdır. Son satırlar:")
+  tail(data, k)
+}
+toplam_na <- sum(is.na(data))
+print(paste("Veri setindeki toplam eksik (NA) değer sayısı:", toplam_na))
+
+sutun_na <- sort(colSums(is.na(data)), decreasing = TRUE)
+
+print("En çok eksik veri içeren ilk 8 sütun:")
+head(sutun_na, 8)
+
+toplam_na <- sum(is.na(data))
+print(paste("Veri setindeki toplam eksik (NA) değer sayısı:", toplam_na))
+
+sutun_na <- sort(colSums(is.na(data)), decreasing = TRUE)
+
+print("En çok eksik veri içeren ilk 8 sütun:")
+head(sutun_na, 8)
+
+new_data <- data
+
+for(col in names(new_data)) {
+  
+  if(is.numeric(new_data[[col]])) {
+    new_data[[col]][is.na(new_data[[col]])] <- (my_birth_year + k) 
+    
+  } else {
+    new_data[[col]] <- as.character(new_data[[col]])
+    
+    new_data[[col]][is.na(new_data[[col]])] <- paste0(my_first, "_", k)
+  }
+}
+
+print(paste("Kalan NA Sayısı:", sum(is.na(new_data))))
+anyNA(new_data)
+
+if (k %% 2 == 0) {
+  print("k sayısı çift. Yeni verinin ilk k satırı:")
+  head(new_data, k)
+} else {
+  print("k sayısı tek. Yeni verinin son k satırı:")
+  tail(new_data, k)
+}
+
+kalan_na <- sum(is.na(new_data))
+print(paste("Yeni veride kalan toplam NA sayısı:", kalan_na))
+
+print("Veride hiç eksik (NA) değer kaldı mı?")
+anyNA(new_data)
 ```
 
-## (b)
+# 
