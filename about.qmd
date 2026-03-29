@@ -3,7 +3,7 @@ title: "Hakkımda"
 sidebar: false 
 ---
 
-![](assets/images/vesikalik.jpeg){fig-align="center"}
+#                               ![](images/clipboard-2336795905.png){width="178"}
 
 # Eğitim
 
@@ -14,23 +14,24 @@ sidebar: false
 
 ## Employements
 
-1.  Firm TASECS İklimlendirme A.Ş., position Expert Specialty Engineering Engineer, year 2023
+1.  TASECS İklimlendirme A.Ş., position Expert Specialty Engineering Engineer, 2023-ongoing
+2.  FNSS DEFENSE SYSTEMS INC. , 02.2022-11.2023
 
 ## Internships
 
-1.  Firm ASELSAN A.Ş., position System Engineering Intern, year 2020
+1.  ASELSAN A.Ş., position System Engineering Intern, 2020
+2.  MAN Truck and Bus INC., 2019
+3.  Toyota Plaza Toyan,2017
 
 # Projects
 
-1.  MATLAB/SIMILINK ile Elektrikli Araç Modelleme
-
-# Publications
-
-1.  Dasdemir, E., Batta, R., Koksalan, M., Tezcaner Ozturk, D. (2022) “UAV Routing for Reconnaissance Mission: A Multi-Objective Orienteering Problem with Time-Dependent Prizes and Multiple Connections”, Computers & Operations Research, 145: 105882.
+1.  ELECTRIC VEHICLE MODELLING and SIMULATION PROJECT with MATLAB/SIMULINK
+2.  INTERNAL COMBUSTION ENGINE DESIGN AND ANALYSIS
+3.  AUDI A4 3D SURFACE DESIGN
 
 # Competencies
 
-R, Quarto, Git, Python
+Catia, Simulink, R, Quarto, Git
 
 # Hobbies
 

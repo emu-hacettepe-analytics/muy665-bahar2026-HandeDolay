@@ -11,11 +11,22 @@ Bu çalışmada 3 görevimiz var. Bu görevler..... Bunlara sırayla aşağıda 
 
 Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler serisinin Kerem Demirtaş ile veri bilimi dünyasındaki pratik uygulamalar ve endüstri mühendisliğinin bu alandaki güçlü konumu ele alınmıştır. Konuşmanın temel odaklandığı noktalardan biri, endüstri mühendislerinin temel eğitimlerinden gelen analitik düşünme, süreç optimizasyonu ve sistem yaklaşımı becerilerinin, veri bilimi projelerinde ne kadar büyük bir rekabet avantajı sağladığıdır. Sadece kod yazmanın veya algoritma bilmenin ötesinde, iş problemini doğru tanımlamanın ve veriden elde edilen içgörüleri aksiyona dönüştürmenin kritik önemi vurgulanmıştır.
 
-#  (b)
+# (b)
 
 Veri biliminde endüstri mühendisliğinin önemi nedir?
 
 Endüstri mühendisleri aldıkları eğitim gereği problem tanımlama, veri analizi, optimizasyon alanlarında uzmanlaştıkları için veri biliminde bu alanları kullanarak karmaşık problemleri kolaylıkla çözebilmektedir.
+
+Çoktan seçmeli soru:
+
+Endüstri mühendisliği eğitiminin veri bilimine katkısı aşağıdakilerden hangisiyle en iyi açıklanır?
+
+A\) Donanım bilgisi kazandırması\
+B) İş süreçlerini analiz edip optimize edebilme\
+C) Sadece teorik bilgi sağlaması\
+D) Veri tabanı yönetimi öğretmesi
+
+Doğru cevap: B
 
 ```{r}
   
