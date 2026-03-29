@@ -3,7 +3,7 @@ title: "Hakkımda"
 sidebar: false 
 ---
 
-#                               ![](images/clipboard-2336795905.png){width="178"}
+# ![](images/clipboard-2336795905.png){width="178"}
 
 # Eğitim
 
@@ -14,14 +14,14 @@ sidebar: false
 
 ## Employements
 
-1.  TASECS İklimlendirme A.Ş., position Expert Specialty Engineering Engineer, 2023-ongoing
-2.  FNSS DEFENSE SYSTEMS INC. , 02.2022-11.2023
+1.  TASECS Enviromental INC., Expert Specialty Engineering Engineer, 2023-ongoing
+2.  FNSS Defense Systems INC. ,Product Safety Engineer, 02.2022-11.2023
 
 ## Internships
 
-1.  ASELSAN A.Ş., position System Engineering Intern, 2020
-2.  MAN Truck and Bus INC., 2019
-3.  Toyota Plaza Toyan,2017
+1.  ASELSAN INC., System Engineering Intern, 2020
+2.  MAN Truck and Bus INC., Technical Training Intern, 2019
+3.  Toyota Plaza Toyan, Technical Intern, 2017
 
 # Projects
 
