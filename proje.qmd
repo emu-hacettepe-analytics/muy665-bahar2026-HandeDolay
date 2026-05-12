@@ -220,7 +220,6 @@ Analize başlamadan önce veri seti R ortamında düzenlenmiştir. İlk olarak a
 Daha sonra kadın ve erkek öğrenci sayıları uzun formata dönüştürülmüştür. Bu işlem sayesinde cinsiyet değişkeni ayrı bir kategori olarak ele alınmış ve karşılaştırmalı grafikler daha kolay oluşturulmuştur.
 
 Ayrıca kadın ve erkek öğrenci oranları hesaplanmıştır. Böylece yalnızca öğrenci sayıları değil, oransal dağılımlar da analiz edilmiştir.
-
 ```
 
 ```{r}
@@ -328,7 +327,7 @@ Bu bölümde veri seti grafikler yardımıyla incelenmiştir. Grafiklerde yılla
 Aşağıdaki grafik, incelenen fakültelerdeki toplam öğrenci sayısının akademik yıllara göre nasıl değiştiğini göstermektedir.\
 \
 
-```{}
+```         
 ```
 
 ```{r}

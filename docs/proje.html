@@ -593,8 +593,7 @@ Ayrıca veri setinin yıllara göre düzenlenmiş olması, yalnızca mevcut dağ
 
 Daha sonra kadın ve erkek öğrenci sayıları uzun formata dönüştürülmüştür. Bu işlem sayesinde cinsiyet değişkeni ayrı bir kategori olarak ele alınmış ve karşılaştırmalı grafikler daha kolay oluşturulmuştur.
 
-Ayrıca kadın ve erkek öğrenci oranları hesaplanmıştır. Böylece yalnızca öğrenci sayıları değil, oransal dağılımlar da analiz edilmiştir.
-</code></pre>
+Ayrıca kadın ve erkek öğrenci oranları hesaplanmıştır. Böylece yalnızca öğrenci sayıları değil, oransal dağılımlar da analiz edilmiştir.</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -2743,429 +2742,428 @@ Sonuç olarak bu proje, fakültelere göre kadın ve erkek öğrenci dağılım�
 <span id="cb45-230"><a href="#cb45-230" aria-hidden="true" tabindex="-1"></a><span class="in">Daha sonra kadın ve erkek öğrenci sayıları uzun formata dönüştürülmüştür. Bu işlem sayesinde cinsiyet değişkeni ayrı bir kategori olarak ele alınmış ve karşılaştırmalı grafikler daha kolay oluşturulmuştur.</span></span>
 <span id="cb45-231"><a href="#cb45-231" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-232"><a href="#cb45-232" aria-hidden="true" tabindex="-1"></a><span class="in">Ayrıca kadın ve erkek öğrenci oranları hesaplanmıştır. Böylece yalnızca öğrenci sayıları değil, oransal dağılımlar da analiz edilmiştir.</span></span>
-<span id="cb45-233"><a href="#cb45-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-234"><a href="#cb45-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-235"><a href="#cb45-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-238"><a href="#cb45-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-239"><a href="#cb45-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: uzun-veri-goster</span></span>
-<span id="cb45-240"><a href="#cb45-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-241"><a href="#cb45-241" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(veri) <span class="sc">%&gt;%</span></span>
-<span id="cb45-242"><a href="#cb45-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-243"><a href="#cb45-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-244"><a href="#cb45-244" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: genis-veri-goster</span></span>
-<span id="cb45-245"><a href="#cb45-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-246"><a href="#cb45-246" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(veri_genis) <span class="sc">%&gt;%</span></span>
-<span id="cb45-247"><a href="#cb45-247" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-248"><a href="#cb45-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-249"><a href="#cb45-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-250"><a href="#cb45-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-251"><a href="#cb45-251" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb45-252"><a href="#cb45-252" aria-hidden="true" tabindex="-1"></a><span class="in">Eksik veri kontrolü aşağıda yapılmıştır.</span></span>
-<span id="cb45-253"><a href="#cb45-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-254"><a href="#cb45-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-257"><a href="#cb45-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-258"><a href="#cb45-258" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eksik-veri-kontrol</span></span>
-<span id="cb45-259"><a href="#cb45-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-260"><a href="#cb45-260" aria-hidden="true" tabindex="-1"></a>veri <span class="sc">%&gt;%</span></span>
-<span id="cb45-261"><a href="#cb45-261" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb45-262"><a href="#cb45-262" aria-hidden="true" tabindex="-1"></a>    <span class="at">Eksik_Yil =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Yil)),</span>
-<span id="cb45-263"><a href="#cb45-263" aria-hidden="true" tabindex="-1"></a>    <span class="at">Eksik_Cinsiyet =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Cinsiyet)),</span>
-<span id="cb45-264"><a href="#cb45-264" aria-hidden="true" tabindex="-1"></a>    <span class="at">Eksik_Fakulte =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Fakulte)),</span>
-<span id="cb45-265"><a href="#cb45-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">Eksik_Kisi_Sayisi =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Kisi_Sayisi))</span>
-<span id="cb45-266"><a href="#cb45-266" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb45-267"><a href="#cb45-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-268"><a href="#cb45-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-269"><a href="#cb45-269" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-270"><a href="#cb45-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-271"><a href="#cb45-271" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb45-272"><a href="#cb45-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-273"><a href="#cb45-273" aria-hidden="true" tabindex="-1"></a><span class="in">Toplam öğrenci sayılarının kadın ve erkek öğrenci sayılarıyla uyumlu olup olmadığı aşağıda kontrol edilmiştir.</span></span>
-<span id="cb45-274"><a href="#cb45-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-275"><a href="#cb45-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-278"><a href="#cb45-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-279"><a href="#cb45-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: toplam-kontrol</span></span>
-<span id="cb45-280"><a href="#cb45-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-281"><a href="#cb45-281" aria-hidden="true" tabindex="-1"></a>veri_genis <span class="sc">%&gt;%</span></span>
-<span id="cb45-282"><a href="#cb45-282" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb45-283"><a href="#cb45-283" aria-hidden="true" tabindex="-1"></a>    <span class="at">Hesaplanan_Toplam =</span> Erkek <span class="sc">+</span> Kadin,</span>
-<span id="cb45-284"><a href="#cb45-284" aria-hidden="true" tabindex="-1"></a>    <span class="at">Fark =</span> Toplam <span class="sc">-</span> Hesaplanan_Toplam</span>
-<span id="cb45-285"><a href="#cb45-285" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb45-286"><a href="#cb45-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Yil, Fakulte, Erkek, Kadin, Toplam, Hesaplanan_Toplam, Fark) <span class="sc">%&gt;%</span></span>
-<span id="cb45-287"><a href="#cb45-287" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-288"><a href="#cb45-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-289"><a href="#cb45-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-290"><a href="#cb45-290" aria-hidden="true" tabindex="-1"></a>Kadın ve erkek öğrenci oranları aşağıdaki tabloda gösterilmiştir.</span>
-<span id="cb45-291"><a href="#cb45-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-294"><a href="#cb45-294" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-295"><a href="#cb45-295" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: oran-tablosu</span></span>
-<span id="cb45-296"><a href="#cb45-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-297"><a href="#cb45-297" aria-hidden="true" tabindex="-1"></a>oran_tablo <span class="ot">&lt;-</span> oran_veri <span class="sc">%&gt;%</span></span>
-<span id="cb45-298"><a href="#cb45-298" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Yil, Fakulte, Erkek, Kadin, Toplam, Erkek_Orani, Kadin_Orani) <span class="sc">%&gt;%</span></span>
-<span id="cb45-299"><a href="#cb45-299" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb45-300"><a href="#cb45-300" aria-hidden="true" tabindex="-1"></a>    <span class="at">Erkek_Orani =</span> <span class="fu">round</span>(Erkek_Orani, <span class="dv">2</span>),</span>
-<span id="cb45-301"><a href="#cb45-301" aria-hidden="true" tabindex="-1"></a>    <span class="at">Kadin_Orani =</span> <span class="fu">round</span>(Kadin_Orani, <span class="dv">2</span>)</span>
-<span id="cb45-302"><a href="#cb45-302" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb45-303"><a href="#cb45-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-304"><a href="#cb45-304" aria-hidden="true" tabindex="-1"></a>oran_tablo <span class="sc">%&gt;%</span></span>
-<span id="cb45-305"><a href="#cb45-305" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-306"><a href="#cb45-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-307"><a href="#cb45-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-308"><a href="#cb45-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-309"><a href="#cb45-309" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analiz</span></span>
-<span id="cb45-310"><a href="#cb45-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-311"><a href="#cb45-311" aria-hidden="true" tabindex="-1"></a>Analiz sürecinde veri seti hem toplam öğrenci sayıları hem de cinsiyet dağılımı açısından incelenmiştir. İlk olarak yıllara göre toplam öğrenci sayıları hesaplanmıştır. Daha sonra fakülteler arasındaki öğrenci yoğunluğu karşılaştırılmıştır.\</span>
-<span id="cb45-312"><a href="#cb45-312" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-313"><a href="#cb45-313" aria-hidden="true" tabindex="-1"></a>Cinsiyet dağılımını incelemek amacıyla kadın ve erkek öğrenci sayıları hem yıllara göre hem de fakültelere göre analiz edilmiştir. Ayrıca kadın ve erkek öğrenci oranları hesaplanarak fakülteler arasındaki oransal farklılıklar değerlendirilmiştir.\</span>
-<span id="cb45-314"><a href="#cb45-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-317"><a href="#cb45-317" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-318"><a href="#cb45-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: yillik-toplam</span></span>
-<span id="cb45-319"><a href="#cb45-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-320"><a href="#cb45-320" aria-hidden="true" tabindex="-1"></a>yillik_toplam <span class="sc">%&gt;%</span></span>
-<span id="cb45-321"><a href="#cb45-321" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-322"><a href="#cb45-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-323"><a href="#cb45-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fakulte-toplam</span></span>
-<span id="cb45-324"><a href="#cb45-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-325"><a href="#cb45-325" aria-hidden="true" tabindex="-1"></a>fakulte_toplam <span class="sc">%&gt;%</span></span>
-<span id="cb45-326"><a href="#cb45-326" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-327"><a href="#cb45-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-328"><a href="#cb45-328" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cinsiyet-toplam</span></span>
-<span id="cb45-329"><a href="#cb45-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-330"><a href="#cb45-330" aria-hidden="true" tabindex="-1"></a>cinsiyet_toplam <span class="sc">%&gt;%</span></span>
-<span id="cb45-331"><a href="#cb45-331" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-332"><a href="#cb45-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-333"><a href="#cb45-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-334"><a href="#cb45-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-335"><a href="#cb45-335" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-336"><a href="#cb45-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-337"><a href="#cb45-337" aria-hidden="true" tabindex="-1"></a><span class="fu">## Keşifsel Veri Analizi</span></span>
-<span id="cb45-338"><a href="#cb45-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-339"><a href="#cb45-339" aria-hidden="true" tabindex="-1"></a>Bu bölümde veri seti grafikler yardımıyla incelenmiştir. Grafiklerde yıllara göre değişim, fakültelere göre öğrenci yoğunluğu ve cinsiyet dağılımı görsel olarak değerlendirilmiştir.\</span>
-<span id="cb45-340"><a href="#cb45-340" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-341"><a href="#cb45-341" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Yıllara Göre Toplam Öğrenci Sayısı\</span>
-<span id="cb45-342"><a href="#cb45-342" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-343"><a href="#cb45-343" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, incelenen fakültelerdeki toplam öğrenci sayısının akademik yıllara göre nasıl değiştiğini göstermektedir.\</span>
-<span id="cb45-344"><a href="#cb45-344" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-345"><a href="#cb45-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-346"><a href="#cb45-346" aria-hidden="true" tabindex="-1"></a><span class="in">```{}</span></span>
-<span id="cb45-347"><a href="#cb45-347" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-348"><a href="#cb45-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-351"><a href="#cb45-351" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-352"><a href="#cb45-352" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-yillara-gore-toplam</span></span>
-<span id="cb45-353"><a href="#cb45-353" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
-<span id="cb45-354"><a href="#cb45-354" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb45-355"><a href="#cb45-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-356"><a href="#cb45-356" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(yillik_toplam, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Toplam_Ogrenci, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb45-357"><a href="#cb45-357" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"#4472C4"</span>) <span class="sc">+</span></span>
-<span id="cb45-358"><a href="#cb45-358" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"#4472C4"</span>) <span class="sc">+</span></span>
-<span id="cb45-359"><a href="#cb45-359" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb45-360"><a href="#cb45-360" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">comma</span>(Toplam_Ogrenci)),</span>
-<span id="cb45-361"><a href="#cb45-361" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.8</span>,</span>
-<span id="cb45-362"><a href="#cb45-362" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
-<span id="cb45-363"><a href="#cb45-363" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-364"><a href="#cb45-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-365"><a href="#cb45-365" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Yıllara Gore Toplam Ogrenci Sayısı"</span>,</span>
-<span id="cb45-366"><a href="#cb45-366" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
-<span id="cb45-367"><a href="#cb45-367" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Toplam Ogrenci Sayısı"</span></span>
-<span id="cb45-368"><a href="#cb45-368" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-369"><a href="#cb45-369" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb45-370"><a href="#cb45-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-371"><a href="#cb45-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-372"><a href="#cb45-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-373"><a href="#cb45-373" aria-hidden="true" tabindex="-1"></a>Grafik incelendiğinde, toplam öğrenci sayısının yıllara göre değişim gösterdiği görülmektedir. Bu grafik, genel öğrenci yoğunluğunun hangi yıllarda arttığını veya azaldığını değerlendirmek için kullanılmıştır.\</span>
-<span id="cb45-374"><a href="#cb45-374" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-375"><a href="#cb45-375" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakültelere Göre Toplam Öğrenci Sayısı\</span>
-<span id="cb45-376"><a href="#cb45-376" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-377"><a href="#cb45-377" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, beş yıllık dönem boyunca fakültelerin toplam öğrenci sayılarını karşılaştırmaktadır.</span>
-<span id="cb45-378"><a href="#cb45-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-381"><a href="#cb45-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-382"><a href="#cb45-382" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-fakulte-toplam</span></span>
-<span id="cb45-383"><a href="#cb45-383" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
-<span id="cb45-384"><a href="#cb45-384" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb45-385"><a href="#cb45-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-386"><a href="#cb45-386" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fakulte_toplam, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Fakulte, Toplam_Ogrenci), <span class="at">y =</span> Toplam_Ogrenci)) <span class="sc">+</span></span>
-<span id="cb45-387"><a href="#cb45-387" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#70AD47"</span>) <span class="sc">+</span></span>
-<span id="cb45-388"><a href="#cb45-388" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">comma</span>(Toplam_Ogrenci)), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
-<span id="cb45-389"><a href="#cb45-389" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb45-390"><a href="#cb45-390" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-391"><a href="#cb45-391" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere Gore Toplam Ogrenci Sayısı"</span>,</span>
-<span id="cb45-392"><a href="#cb45-392" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Fakulte"</span>,</span>
-<span id="cb45-393"><a href="#cb45-393" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Toplam Ogrenci Sayısı"</span></span>
-<span id="cb45-394"><a href="#cb45-394" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-395"><a href="#cb45-395" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb45-396"><a href="#cb45-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-397"><a href="#cb45-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-398"><a href="#cb45-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-399"><a href="#cb45-399" aria-hidden="true" tabindex="-1"></a>Bu grafik, öğrenci yoğunluğu bakımından hangi fakültelerin öne çıktığını göstermektedir. Eğitim, Sağlık ve Mühendislik fakülteleri toplam öğrenci sayısı bakımından yüksek değerlere sahiptir. Teknoloji Fakültesi ise diğer fakültelere göre daha düşük öğrenci sayısına sahiptir.\</span>
-<span id="cb45-400"><a href="#cb45-400" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-401"><a href="#cb45-401" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Yıllara Göre Kadın-Erkek Öğrenci Sayıları\</span>
-<span id="cb45-402"><a href="#cb45-402" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-403"><a href="#cb45-403" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, yıllara göre kadın ve erkek öğrenci sayılarının toplamını karşılaştırmaktadır.</span>
-<span id="cb45-404"><a href="#cb45-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-407"><a href="#cb45-407" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-408"><a href="#cb45-408" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-yil-cinsiyet</span></span>
-<span id="cb45-409"><a href="#cb45-409" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
-<span id="cb45-410"><a href="#cb45-410" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb45-411"><a href="#cb45-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-412"><a href="#cb45-412" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(yil_cinsiyet, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Toplam, <span class="at">color =</span> Cinsiyet, <span class="at">group =</span> Cinsiyet)) <span class="sc">+</span></span>
-<span id="cb45-413"><a href="#cb45-413" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb45-414"><a href="#cb45-414" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb45-415"><a href="#cb45-415" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">comma</span>(Toplam)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb45-416"><a href="#cb45-416" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-417"><a href="#cb45-417" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Yıllara Gore Kadın-Erkek Ogrenci Sayıları"</span>,</span>
-<span id="cb45-418"><a href="#cb45-418" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
-<span id="cb45-419"><a href="#cb45-419" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Ogrenci Sayısı"</span>,</span>
-<span id="cb45-420"><a href="#cb45-420" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Cinsiyet"</span></span>
-<span id="cb45-421"><a href="#cb45-421" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-422"><a href="#cb45-422" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
-<span id="cb45-423"><a href="#cb45-423" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"ERKEK"</span> <span class="ot">=</span> <span class="st">"#4472C4"</span>, <span class="st">"KADIN"</span> <span class="ot">=</span> <span class="st">"#ED7D31"</span>)) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb45-424"><a href="#cb45-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-425"><a href="#cb45-425" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-426"><a href="#cb45-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-427"><a href="#cb45-427" aria-hidden="true" tabindex="-1"></a>Grafik incelendiğinde, kadın ve erkek öğrenci sayılarının yıllara göre farklı eğilimler gösterebildiği görülmektedir. Kadın ve erkek toplamlarının birlikte gösterilmesi, genel cinsiyet dağılımının yıllara göre değişimini daha net ortaya koymaktadır.\</span>
-<span id="cb45-428"><a href="#cb45-428" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-429"><a href="#cb45-429" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakültelere Göre Kadın-Erkek Dağılımı\</span>
-<span id="cb45-430"><a href="#cb45-430" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-431"><a href="#cb45-431" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, fakültelere göre kadın ve erkek öğrenci sayılarının toplamını göstermektedir.</span>
-<span id="cb45-432"><a href="#cb45-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-435"><a href="#cb45-435" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-436"><a href="#cb45-436" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-fakulte-cinsiyet</span></span>
-<span id="cb45-437"><a href="#cb45-437" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb45-438"><a href="#cb45-438" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb45-439"><a href="#cb45-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-440"><a href="#cb45-440" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fakulte_cinsiyet, <span class="fu">aes</span>(<span class="at">x =</span> Fakulte, <span class="at">y =</span> Toplam, <span class="at">fill =</span> Cinsiyet)) <span class="sc">+</span></span>
-<span id="cb45-441"><a href="#cb45-441" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb45-442"><a href="#cb45-442" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb45-443"><a href="#cb45-443" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-444"><a href="#cb45-444" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere Gore Kadın-Erkek Ogrenci Dağılımı"</span>,</span>
-<span id="cb45-445"><a href="#cb45-445" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Fakulte"</span>,</span>
-<span id="cb45-446"><a href="#cb45-446" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Ogrenci Sayısı"</span>,</span>
-<span id="cb45-447"><a href="#cb45-447" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Cinsiyet"</span></span>
-<span id="cb45-448"><a href="#cb45-448" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-449"><a href="#cb45-449" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
-<span id="cb45-450"><a href="#cb45-450" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"ERKEK"</span> <span class="ot">=</span> <span class="st">"#4472C4"</span>, <span class="st">"KADIN"</span> <span class="ot">=</span> <span class="st">"#ED7D31"</span>)) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb45-451"><a href="#cb45-451" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-452"><a href="#cb45-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-453"><a href="#cb45-453" aria-hidden="true" tabindex="-1"></a>Bu grafik, fakülteler arasında cinsiyet dağılımı bakımından belirgin farklar olduğunu göstermektedir. Eğitim ve Sağlık fakültelerinde kadın öğrenci sayısı yüksekken, Mühendislik ve Teknoloji fakültelerinde erkek öğrenci sayısının daha yüksek olduğu görülmektedir.\</span>
-<span id="cb45-454"><a href="#cb45-454" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-455"><a href="#cb45-455" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakültelerde Kadın Öğrenci Oranı\</span>
-<span id="cb45-456"><a href="#cb45-456" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-457"><a href="#cb45-457" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, yıllara göre fakültelerdeki kadın öğrenci oranlarını göstermektedir.</span>
-<span id="cb45-458"><a href="#cb45-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-461"><a href="#cb45-461" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-462"><a href="#cb45-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-kadin-orani</span></span>
-<span id="cb45-463"><a href="#cb45-463" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb45-464"><a href="#cb45-464" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb45-465"><a href="#cb45-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-466"><a href="#cb45-466" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(oran_veri, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Kadin_Orani, <span class="at">color =</span> Fakulte, <span class="at">group =</span> Fakulte)) <span class="sc">+</span></span>
-<span id="cb45-467"><a href="#cb45-467" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
-<span id="cb45-468"><a href="#cb45-468" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb45-469"><a href="#cb45-469" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-470"><a href="#cb45-470" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Yıllara Gore Fakultelerde Kadın Ogrenci Oranı"</span>,</span>
-<span id="cb45-471"><a href="#cb45-471" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
-<span id="cb45-472"><a href="#cb45-472" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Kadın Ogrenci Oranı (%)"</span>,</span>
-<span id="cb45-473"><a href="#cb45-473" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Fakulte"</span></span>
-<span id="cb45-474"><a href="#cb45-474" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-475"><a href="#cb45-475" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">"%"</span>)) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb45-476"><a href="#cb45-476" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-477"><a href="#cb45-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-478"><a href="#cb45-478" aria-hidden="true" tabindex="-1"></a>Kadın öğrenci oranları incelendiğinde, Eğitim ve Sağlık fakültelerinde kadın öğrencilerin daha yüksek oranda temsil edildiği görülmektedir. Buna karşılık Mühendislik ve Teknoloji fakültelerinde kadın öğrenci oranı daha düşüktür.\</span>
-<span id="cb45-479"><a href="#cb45-479" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-480"><a href="#cb45-480" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakültelerde Erkek Öğrenci Oranı\</span>
-<span id="cb45-481"><a href="#cb45-481" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-482"><a href="#cb45-482" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, yıllara göre fakültelerdeki erkek öğrenci oranlarını göstermektedir.</span>
-<span id="cb45-483"><a href="#cb45-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-486"><a href="#cb45-486" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-487"><a href="#cb45-487" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-erkek-orani</span></span>
-<span id="cb45-488"><a href="#cb45-488" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb45-489"><a href="#cb45-489" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb45-490"><a href="#cb45-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-491"><a href="#cb45-491" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(oran_veri, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Erkek_Orani, <span class="at">color =</span> Fakulte, <span class="at">group =</span> Fakulte)) <span class="sc">+</span></span>
-<span id="cb45-492"><a href="#cb45-492" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
-<span id="cb45-493"><a href="#cb45-493" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb45-494"><a href="#cb45-494" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-495"><a href="#cb45-495" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Yıllara Gore Fakultelerde Erkek Ogrenci Oranı"</span>,</span>
-<span id="cb45-496"><a href="#cb45-496" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
-<span id="cb45-497"><a href="#cb45-497" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Erkek Ogrenci Oranı (%)"</span>,</span>
-<span id="cb45-498"><a href="#cb45-498" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Fakulte"</span></span>
-<span id="cb45-499"><a href="#cb45-499" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-500"><a href="#cb45-500" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">"%"</span>)) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb45-501"><a href="#cb45-501" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-502"><a href="#cb45-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-503"><a href="#cb45-503" aria-hidden="true" tabindex="-1"></a>Erkek öğrenci oranları incelendiğinde, Mühendislik ve Teknoloji fakültelerinde erkek öğrencilerin daha baskın olduğu görülmektedir. Bu durum teknik alanlarda erkek öğrenci temsilinin daha yüksek olduğunu göstermektedir.\</span>
-<span id="cb45-504"><a href="#cb45-504" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-505"><a href="#cb45-505" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakülte Bazında Toplam Öğrenci Sayılarının Dağılımı\</span>
-<span id="cb45-506"><a href="#cb45-506" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-507"><a href="#cb45-507" aria-hidden="true" tabindex="-1"></a>Aşağıdaki boxplot grafiği, fakültelerin yıllara göre toplam öğrenci sayılarındaki dağılımını göstermektedir.</span>
-<span id="cb45-508"><a href="#cb45-508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-511"><a href="#cb45-511" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-512"><a href="#cb45-512" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-boxplot</span></span>
-<span id="cb45-513"><a href="#cb45-513" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
-<span id="cb45-514"><a href="#cb45-514" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb45-515"><a href="#cb45-515" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-516"><a href="#cb45-516" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri_toplam, <span class="fu">aes</span>(<span class="at">x =</span> Fakulte, <span class="at">y =</span> Kisi_Sayisi, <span class="at">fill =</span> Fakulte)) <span class="sc">+</span></span>
-<span id="cb45-517"><a href="#cb45-517" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb45-518"><a href="#cb45-518" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb45-519"><a href="#cb45-519" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-520"><a href="#cb45-520" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere Gore Toplam Ogrenci Sayılarının Dağılımı"</span>,</span>
-<span id="cb45-521"><a href="#cb45-521" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Fakulte"</span>,</span>
-<span id="cb45-522"><a href="#cb45-522" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Toplam Ogrenci Sayısı"</span></span>
-<span id="cb45-523"><a href="#cb45-523" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-524"><a href="#cb45-524" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
-<span id="cb45-525"><a href="#cb45-525" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb45-526"><a href="#cb45-526" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb45-527"><a href="#cb45-527" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-528"><a href="#cb45-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-529"><a href="#cb45-529" aria-hidden="true" tabindex="-1"></a>Boxplot grafiği, fakültelerin yıllara göre öğrenci sayılarının hangi aralıkta değiştiğini göstermektedir. Bu grafik, fakülteler arasında değişkenliğin daha kolay karşılaştırılmasını sağlar.\</span>
-<span id="cb45-530"><a href="#cb45-530" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-531"><a href="#cb45-531" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakülte ve Yıl Bazında Isı Haritası\</span>
-<span id="cb45-532"><a href="#cb45-532" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-533"><a href="#cb45-533" aria-hidden="true" tabindex="-1"></a>Aşağıdaki ısı haritası, fakülte ve yıl kesişimindeki toplam öğrenci sayılarını göstermektedir.</span>
-<span id="cb45-534"><a href="#cb45-534" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-537"><a href="#cb45-537" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-538"><a href="#cb45-538" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-isi-haritasi</span></span>
-<span id="cb45-539"><a href="#cb45-539" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb45-540"><a href="#cb45-540" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb45-541"><a href="#cb45-541" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-542"><a href="#cb45-542" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri_toplam, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Fakulte, <span class="at">fill =</span> Kisi_Sayisi)) <span class="sc">+</span></span>
-<span id="cb45-543"><a href="#cb45-543" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb45-544"><a href="#cb45-544" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">comma</span>(Kisi_Sayisi)), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb45-545"><a href="#cb45-545" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-546"><a href="#cb45-546" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere ve Yıllara Gore Toplam Ogrenci Sayısı Isı Haritası"</span>,</span>
-<span id="cb45-547"><a href="#cb45-547" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
-<span id="cb45-548"><a href="#cb45-548" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Fakulte"</span>,</span>
-<span id="cb45-549"><a href="#cb45-549" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Toplam"</span></span>
-<span id="cb45-550"><a href="#cb45-550" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-551"><a href="#cb45-551" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"#D9EAF7"</span>, <span class="at">high =</span> <span class="st">"#4472C4"</span>) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb45-552"><a href="#cb45-552" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-553"><a href="#cb45-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-554"><a href="#cb45-554" aria-hidden="true" tabindex="-1"></a>Isı haritası, hangi fakülte ve yıl kombinasyonlarında öğrenci yoğunluğunun daha yüksek olduğunu görsel olarak göstermektedir. Daha koyu renkler, daha yüksek öğrenci sayılarını ifade etmektedir.</span>
-<span id="cb45-555"><a href="#cb45-555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-556"><a href="#cb45-556" aria-hidden="true" tabindex="-1"></a><span class="fu">## Trend Analizi</span></span>
-<span id="cb45-557"><a href="#cb45-557" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-558"><a href="#cb45-558" aria-hidden="true" tabindex="-1"></a>xxxxxx</span>
-<span id="cb45-559"><a href="#cb45-559" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-560"><a href="#cb45-560" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Uydurma</span></span>
-<span id="cb45-561"><a href="#cb45-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-562"><a href="#cb45-562" aria-hidden="true" tabindex="-1"></a>Bu projede temel amaç keşifsel veri analizi yapmak olsa da, yıllara göre toplam öğrenci sayısındaki eğilimi incelemek için basit doğrusal model kurulmuştur. Modelde bağımlı değişken toplam öğrenci sayısıdır. Bağımsız değişken ise akademik yılın sayısal karşılığıdır.\</span>
-<span id="cb45-563"><a href="#cb45-563" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-564"><a href="#cb45-564" aria-hidden="true" tabindex="-1"></a>Model genel olarak şu şekilde ifade edilebilir:\</span>
-<span id="cb45-565"><a href="#cb45-565" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-566"><a href="#cb45-566" aria-hidden="true" tabindex="-1"></a><span class="sc">\*\*</span>Toplam Öğrenci Sayısı = β0 + β1 × Yıl + ε<span class="sc">\*\*</span>\</span>
-<span id="cb45-567"><a href="#cb45-567" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-568"><a href="#cb45-568" aria-hidden="true" tabindex="-1"></a>Burada β1 katsayısı, yıllara göre toplam öğrenci sayısının artış veya azalış eğilimini göstermektedir. Katsayının pozitif olması artış eğilimini, negatif olması ise azalış eğilimini ifade eder.\</span>
-<span id="cb45-569"><a href="#cb45-569" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-570"><a href="#cb45-570" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-573"><a href="#cb45-573" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-574"><a href="#cb45-574" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-verisi</span></span>
-<span id="cb45-575"><a href="#cb45-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-576"><a href="#cb45-576" aria-hidden="true" tabindex="-1"></a>model_veri <span class="ot">&lt;-</span> veri_toplam <span class="sc">%&gt;%</span></span>
-<span id="cb45-577"><a href="#cb45-577" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb45-578"><a href="#cb45-578" aria-hidden="true" tabindex="-1"></a>    <span class="at">Yil_Sayi =</span> <span class="fu">as.numeric</span>(Yil)</span>
-<span id="cb45-579"><a href="#cb45-579" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb45-580"><a href="#cb45-580" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-581"><a href="#cb45-581" aria-hidden="true" tabindex="-1"></a>model_veri <span class="sc">%&gt;%</span></span>
-<span id="cb45-582"><a href="#cb45-582" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Yil, Yil_Sayi, Fakulte, Kisi_Sayisi) <span class="sc">%&gt;%</span></span>
-<span id="cb45-583"><a href="#cb45-583" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb45-584"><a href="#cb45-584" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-585"><a href="#cb45-585" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-586"><a href="#cb45-586" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-587"><a href="#cb45-587" aria-hidden="true" tabindex="-1"></a>Her fakülte için ayrı doğrusal model kurulmuştur.</span>
-<span id="cb45-588"><a href="#cb45-588" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-591"><a href="#cb45-591" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-592"><a href="#cb45-592" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-sonuclari</span></span>
-<span id="cb45-593"><a href="#cb45-593" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-594"><a href="#cb45-594" aria-hidden="true" tabindex="-1"></a>model_sonuclari <span class="ot">&lt;-</span> model_veri <span class="sc">%&gt;%</span></span>
-<span id="cb45-595"><a href="#cb45-595" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fakulte) <span class="sc">%&gt;%</span></span>
-<span id="cb45-596"><a href="#cb45-596" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">lm</span>(Kisi_Sayisi <span class="sc">~</span> Yil_Sayi, <span class="at">data =</span> .)))</span>
-<span id="cb45-597"><a href="#cb45-597" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-598"><a href="#cb45-598" aria-hidden="true" tabindex="-1"></a>model_sonuclari <span class="sc">%&gt;%</span></span>
-<span id="cb45-599"><a href="#cb45-599" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-600"><a href="#cb45-600" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-601"><a href="#cb45-601" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-602"><a href="#cb45-602" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-603"><a href="#cb45-603" aria-hidden="true" tabindex="-1"></a>Model sonuçlarının daha anlaşılır olması için yalnızca eğilim katsayıları aşağıda gösterilmiştir.</span>
-<span id="cb45-604"><a href="#cb45-604" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-607"><a href="#cb45-607" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-608"><a href="#cb45-608" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-egilim-katsayilari</span></span>
-<span id="cb45-609"><a href="#cb45-609" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-610"><a href="#cb45-610" aria-hidden="true" tabindex="-1"></a>egilim_sonuclari <span class="ot">&lt;-</span> model_sonuclari <span class="sc">%&gt;%</span></span>
-<span id="cb45-611"><a href="#cb45-611" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"Yil_Sayi"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb45-612"><a href="#cb45-612" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Fakulte, estimate, std.error, statistic, p.value) <span class="sc">%&gt;%</span></span>
-<span id="cb45-613"><a href="#cb45-613" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb45-614"><a href="#cb45-614" aria-hidden="true" tabindex="-1"></a>    <span class="at">Egilim_Katsayisi =</span> estimate,</span>
-<span id="cb45-615"><a href="#cb45-615" aria-hidden="true" tabindex="-1"></a>    <span class="at">Standart_Hata =</span> std.error,</span>
-<span id="cb45-616"><a href="#cb45-616" aria-hidden="true" tabindex="-1"></a>    <span class="at">Test_Istatistigi =</span> statistic,</span>
-<span id="cb45-617"><a href="#cb45-617" aria-hidden="true" tabindex="-1"></a>    <span class="at">P_Degeri =</span> p.value</span>
-<span id="cb45-618"><a href="#cb45-618" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb45-619"><a href="#cb45-619" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-620"><a href="#cb45-620" aria-hidden="true" tabindex="-1"></a>egilim_sonuclari <span class="sc">%&gt;%</span></span>
-<span id="cb45-621"><a href="#cb45-621" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb45-622"><a href="#cb45-622" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-623"><a href="#cb45-623" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-624"><a href="#cb45-624" aria-hidden="true" tabindex="-1"></a>Model sonuçlarına göre eğilim katsayısı negatif olan fakültelerde toplam öğrenci sayısının yıllar içinde azalma eğiliminde olduğu, pozitif olan fakültelerde ise artış eğilimi olduğu söylenebilir. Ancak veri seti yalnızca beş akademik yılı kapsadığı için bu modeller güçlü bir tahmin modeli olarak değil, genel eğilimi gösteren destekleyici analizler olarak değerlendirilmelidir.\</span>
-<span id="cb45-625"><a href="#cb45-625" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-626"><a href="#cb45-626" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, fakültelere göre toplam öğrenci sayısı ve doğrusal eğilim çizgisini göstermektedir.</span>
-<span id="cb45-627"><a href="#cb45-627" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-630"><a href="#cb45-630" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-631"><a href="#cb45-631" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-model-egilim</span></span>
-<span id="cb45-632"><a href="#cb45-632" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb45-633"><a href="#cb45-633" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb45-634"><a href="#cb45-634" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-635"><a href="#cb45-635" aria-hidden="true" tabindex="-1"></a>model_veri <span class="ot">&lt;-</span> veri_toplam <span class="sc">%&gt;%</span></span>
-<span id="cb45-636"><a href="#cb45-636" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb45-637"><a href="#cb45-637" aria-hidden="true" tabindex="-1"></a>    <span class="at">Yil_Sayi =</span> <span class="fu">as.numeric</span>(Yil)</span>
-<span id="cb45-638"><a href="#cb45-638" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb45-639"><a href="#cb45-639" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-640"><a href="#cb45-640" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(model_veri, <span class="fu">aes</span>(<span class="at">x =</span> Yil_Sayi, <span class="at">y =</span> Kisi_Sayisi, <span class="at">color =</span> Fakulte)) <span class="sc">+</span></span>
-<span id="cb45-641"><a href="#cb45-641" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb45-642"><a href="#cb45-642" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb45-643"><a href="#cb45-643" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb45-644"><a href="#cb45-644" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb45-645"><a href="#cb45-645" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">levels</span>(model_veri<span class="sc">$</span>Yil)</span>
-<span id="cb45-646"><a href="#cb45-646" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-647"><a href="#cb45-647" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-648"><a href="#cb45-648" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere Gore Toplam Ogrenci Sayısı Egilim Modeli"</span>,</span>
-<span id="cb45-649"><a href="#cb45-649" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
-<span id="cb45-650"><a href="#cb45-650" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Toplam Ogrenci Sayısı"</span>,</span>
-<span id="cb45-651"><a href="#cb45-651" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Fakulte"</span></span>
-<span id="cb45-652"><a href="#cb45-652" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-653"><a href="#cb45-653" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb45-654"><a href="#cb45-654" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-655"><a href="#cb45-655" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-656"><a href="#cb45-656" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sonuçlar</span></span>
-<span id="cb45-657"><a href="#cb45-657" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-658"><a href="#cb45-658" aria-hidden="true" tabindex="-1"></a>Bu çalışmada 2020-2021 ile 2024-2025 akademik yılları arasında seçilmiş beş fakültedeki kadın ve erkek öğrenci sayıları analiz edilmiştir. Analiz sonucunda fakülteler arasında hem toplam öğrenci sayısı hem de cinsiyet dağılımı açısından belirgin farklılıklar olduğu görülmüştür.\</span>
-<span id="cb45-659"><a href="#cb45-659" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-660"><a href="#cb45-660" aria-hidden="true" tabindex="-1"></a>Genel bulgulara göre Eğitim Fakültesi, Sağlık Fakültesi ve Mühendislik Fakültesi öğrenci yoğunluğu bakımından öne çıkmaktadır. Teknoloji Fakültesi ise incelenen fakülteler arasında en düşük toplam öğrenci sayısına sahip fakültedir.\</span>
-<span id="cb45-661"><a href="#cb45-661" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-662"><a href="#cb45-662" aria-hidden="true" tabindex="-1"></a>Cinsiyet dağılımı açısından değerlendirildiğinde, Eğitim Fakültesi ve Sağlık Fakültesi’nde kadın öğrencilerin daha yüksek oranda temsil edildiği görülmektedir. Buna karşılık Mühendislik Fakültesi ve Teknoloji Fakültesi’nde erkek öğrenci oranı daha yüksektir. Bu durum, fakülte türlerine göre öğrenci tercihlerinin ve alan yönelimlerinin farklılaştığını göstermektedir.\</span>
-<span id="cb45-663"><a href="#cb45-663" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-664"><a href="#cb45-664" aria-hidden="true" tabindex="-1"></a>İktisadi ve İdari Bilimler Fakültesi’nde kadın ve erkek öğrenci sayılarının bazı yıllarda birbirine daha yakın olduğu görülmüştür. Bu fakülte, cinsiyet dağılımı açısından diğer fakültelere göre daha dengeli bir yapı sergilemektedir.\</span>
-<span id="cb45-665"><a href="#cb45-665" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-666"><a href="#cb45-666" aria-hidden="true" tabindex="-1"></a>Model uydurma aşamasında kurulan basit doğrusal modeller, fakültelerdeki toplam öğrenci sayılarının yıllara göre genel eğilimini incelemek amacıyla kullanılmıştır. Ancak veri seti yalnızca beş yıllık dönemden oluştuğu için model sonuçları uzun dönemli tahmin amacıyla değil, eğilimi destekleyici bir analiz olarak değerlendirilmelidir.\</span>
-<span id="cb45-667"><a href="#cb45-667" aria-hidden="true" tabindex="-1"></a>\</span>
-<span id="cb45-668"><a href="#cb45-668" aria-hidden="true" tabindex="-1"></a>Sonuç olarak bu proje, fakültelere göre kadın ve erkek öğrenci dağılımını anlamak için yararlı bir analiz sunmaktadır. Elde edilen bulgular, yükseköğretimde fakülte türlerine göre cinsiyet dağılımının farklılaştığını göstermektedir. Daha kapsamlı bir çalışma için ilerleyen aşamalarda daha fazla fakülte, daha uzun yıllık veri ve farklı üniversitelerden elde edilen bilgiler analize dahil edilebilir.</span>
-<span id="cb45-669"><a href="#cb45-669" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-672"><a href="#cb45-672" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-673"><a href="#cb45-673" aria-hidden="true" tabindex="-1"></a>final_ozet <span class="ot">&lt;-</span> veri_genis <span class="sc">%&gt;%</span></span>
-<span id="cb45-674"><a href="#cb45-674" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fakulte) <span class="sc">%&gt;%</span></span>
-<span id="cb45-675"><a href="#cb45-675" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb45-676"><a href="#cb45-676" aria-hidden="true" tabindex="-1"></a>    <span class="at">Toplam_Erkek =</span> <span class="fu">sum</span>(Erkek, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb45-677"><a href="#cb45-677" aria-hidden="true" tabindex="-1"></a>    <span class="at">Toplam_Kadin =</span> <span class="fu">sum</span>(Kadin, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb45-678"><a href="#cb45-678" aria-hidden="true" tabindex="-1"></a>    <span class="at">Genel_Toplam =</span> <span class="fu">sum</span>(Toplam, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb45-679"><a href="#cb45-679" aria-hidden="true" tabindex="-1"></a>    <span class="at">Kadin_Orani =</span> <span class="fu">round</span>(Toplam_Kadin <span class="sc">/</span> Genel_Toplam <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>),</span>
-<span id="cb45-680"><a href="#cb45-680" aria-hidden="true" tabindex="-1"></a>    <span class="at">Erkek_Orani =</span> <span class="fu">round</span>(Toplam_Erkek <span class="sc">/</span> Genel_Toplam <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>),</span>
-<span id="cb45-681"><a href="#cb45-681" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb45-682"><a href="#cb45-682" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb45-683"><a href="#cb45-683" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Genel_Toplam))</span>
-<span id="cb45-684"><a href="#cb45-684" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-685"><a href="#cb45-685" aria-hidden="true" tabindex="-1"></a>final_ozet <span class="sc">%&gt;%</span></span>
-<span id="cb45-686"><a href="#cb45-686" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
-<span id="cb45-687"><a href="#cb45-687" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-688"><a href="#cb45-688" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-689"><a href="#cb45-689" aria-hidden="true" tabindex="-1"></a><span class="fu"># Sonuçlar ve Ana Çıkarımlar</span></span>
-<span id="cb45-690"><a href="#cb45-690" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-691"><a href="#cb45-691" aria-hidden="true" tabindex="-1"></a>xxxxxx</span>
+<span id="cb45-233"><a href="#cb45-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-234"><a href="#cb45-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-237"><a href="#cb45-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-238"><a href="#cb45-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: uzun-veri-goster</span></span>
+<span id="cb45-239"><a href="#cb45-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-240"><a href="#cb45-240" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(veri) <span class="sc">%&gt;%</span></span>
+<span id="cb45-241"><a href="#cb45-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-242"><a href="#cb45-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-243"><a href="#cb45-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: genis-veri-goster</span></span>
+<span id="cb45-244"><a href="#cb45-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-245"><a href="#cb45-245" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(veri_genis) <span class="sc">%&gt;%</span></span>
+<span id="cb45-246"><a href="#cb45-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-247"><a href="#cb45-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-248"><a href="#cb45-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-249"><a href="#cb45-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-250"><a href="#cb45-250" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb45-251"><a href="#cb45-251" aria-hidden="true" tabindex="-1"></a><span class="in">Eksik veri kontrolü aşağıda yapılmıştır.</span></span>
+<span id="cb45-252"><a href="#cb45-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-253"><a href="#cb45-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-256"><a href="#cb45-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-257"><a href="#cb45-257" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eksik-veri-kontrol</span></span>
+<span id="cb45-258"><a href="#cb45-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-259"><a href="#cb45-259" aria-hidden="true" tabindex="-1"></a>veri <span class="sc">%&gt;%</span></span>
+<span id="cb45-260"><a href="#cb45-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb45-261"><a href="#cb45-261" aria-hidden="true" tabindex="-1"></a>    <span class="at">Eksik_Yil =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Yil)),</span>
+<span id="cb45-262"><a href="#cb45-262" aria-hidden="true" tabindex="-1"></a>    <span class="at">Eksik_Cinsiyet =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Cinsiyet)),</span>
+<span id="cb45-263"><a href="#cb45-263" aria-hidden="true" tabindex="-1"></a>    <span class="at">Eksik_Fakulte =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Fakulte)),</span>
+<span id="cb45-264"><a href="#cb45-264" aria-hidden="true" tabindex="-1"></a>    <span class="at">Eksik_Kisi_Sayisi =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Kisi_Sayisi))</span>
+<span id="cb45-265"><a href="#cb45-265" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb45-266"><a href="#cb45-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-267"><a href="#cb45-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-268"><a href="#cb45-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-269"><a href="#cb45-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-270"><a href="#cb45-270" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb45-271"><a href="#cb45-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-272"><a href="#cb45-272" aria-hidden="true" tabindex="-1"></a><span class="in">Toplam öğrenci sayılarının kadın ve erkek öğrenci sayılarıyla uyumlu olup olmadığı aşağıda kontrol edilmiştir.</span></span>
+<span id="cb45-273"><a href="#cb45-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-274"><a href="#cb45-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-277"><a href="#cb45-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-278"><a href="#cb45-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: toplam-kontrol</span></span>
+<span id="cb45-279"><a href="#cb45-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-280"><a href="#cb45-280" aria-hidden="true" tabindex="-1"></a>veri_genis <span class="sc">%&gt;%</span></span>
+<span id="cb45-281"><a href="#cb45-281" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb45-282"><a href="#cb45-282" aria-hidden="true" tabindex="-1"></a>    <span class="at">Hesaplanan_Toplam =</span> Erkek <span class="sc">+</span> Kadin,</span>
+<span id="cb45-283"><a href="#cb45-283" aria-hidden="true" tabindex="-1"></a>    <span class="at">Fark =</span> Toplam <span class="sc">-</span> Hesaplanan_Toplam</span>
+<span id="cb45-284"><a href="#cb45-284" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb45-285"><a href="#cb45-285" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Yil, Fakulte, Erkek, Kadin, Toplam, Hesaplanan_Toplam, Fark) <span class="sc">%&gt;%</span></span>
+<span id="cb45-286"><a href="#cb45-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-287"><a href="#cb45-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-288"><a href="#cb45-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-289"><a href="#cb45-289" aria-hidden="true" tabindex="-1"></a>Kadın ve erkek öğrenci oranları aşağıdaki tabloda gösterilmiştir.</span>
+<span id="cb45-290"><a href="#cb45-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-293"><a href="#cb45-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-294"><a href="#cb45-294" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: oran-tablosu</span></span>
+<span id="cb45-295"><a href="#cb45-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-296"><a href="#cb45-296" aria-hidden="true" tabindex="-1"></a>oran_tablo <span class="ot">&lt;-</span> oran_veri <span class="sc">%&gt;%</span></span>
+<span id="cb45-297"><a href="#cb45-297" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Yil, Fakulte, Erkek, Kadin, Toplam, Erkek_Orani, Kadin_Orani) <span class="sc">%&gt;%</span></span>
+<span id="cb45-298"><a href="#cb45-298" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb45-299"><a href="#cb45-299" aria-hidden="true" tabindex="-1"></a>    <span class="at">Erkek_Orani =</span> <span class="fu">round</span>(Erkek_Orani, <span class="dv">2</span>),</span>
+<span id="cb45-300"><a href="#cb45-300" aria-hidden="true" tabindex="-1"></a>    <span class="at">Kadin_Orani =</span> <span class="fu">round</span>(Kadin_Orani, <span class="dv">2</span>)</span>
+<span id="cb45-301"><a href="#cb45-301" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-302"><a href="#cb45-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-303"><a href="#cb45-303" aria-hidden="true" tabindex="-1"></a>oran_tablo <span class="sc">%&gt;%</span></span>
+<span id="cb45-304"><a href="#cb45-304" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-305"><a href="#cb45-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-306"><a href="#cb45-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-307"><a href="#cb45-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-308"><a href="#cb45-308" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analiz</span></span>
+<span id="cb45-309"><a href="#cb45-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-310"><a href="#cb45-310" aria-hidden="true" tabindex="-1"></a>Analiz sürecinde veri seti hem toplam öğrenci sayıları hem de cinsiyet dağılımı açısından incelenmiştir. İlk olarak yıllara göre toplam öğrenci sayıları hesaplanmıştır. Daha sonra fakülteler arasındaki öğrenci yoğunluğu karşılaştırılmıştır.\</span>
+<span id="cb45-311"><a href="#cb45-311" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-312"><a href="#cb45-312" aria-hidden="true" tabindex="-1"></a>Cinsiyet dağılımını incelemek amacıyla kadın ve erkek öğrenci sayıları hem yıllara göre hem de fakültelere göre analiz edilmiştir. Ayrıca kadın ve erkek öğrenci oranları hesaplanarak fakülteler arasındaki oransal farklılıklar değerlendirilmiştir.\</span>
+<span id="cb45-313"><a href="#cb45-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-316"><a href="#cb45-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-317"><a href="#cb45-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: yillik-toplam</span></span>
+<span id="cb45-318"><a href="#cb45-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-319"><a href="#cb45-319" aria-hidden="true" tabindex="-1"></a>yillik_toplam <span class="sc">%&gt;%</span></span>
+<span id="cb45-320"><a href="#cb45-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-321"><a href="#cb45-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-322"><a href="#cb45-322" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fakulte-toplam</span></span>
+<span id="cb45-323"><a href="#cb45-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-324"><a href="#cb45-324" aria-hidden="true" tabindex="-1"></a>fakulte_toplam <span class="sc">%&gt;%</span></span>
+<span id="cb45-325"><a href="#cb45-325" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-326"><a href="#cb45-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-327"><a href="#cb45-327" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cinsiyet-toplam</span></span>
+<span id="cb45-328"><a href="#cb45-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-329"><a href="#cb45-329" aria-hidden="true" tabindex="-1"></a>cinsiyet_toplam <span class="sc">%&gt;%</span></span>
+<span id="cb45-330"><a href="#cb45-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-331"><a href="#cb45-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-332"><a href="#cb45-332" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-333"><a href="#cb45-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-334"><a href="#cb45-334" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-335"><a href="#cb45-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-336"><a href="#cb45-336" aria-hidden="true" tabindex="-1"></a><span class="fu">## Keşifsel Veri Analizi</span></span>
+<span id="cb45-337"><a href="#cb45-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-338"><a href="#cb45-338" aria-hidden="true" tabindex="-1"></a>Bu bölümde veri seti grafikler yardımıyla incelenmiştir. Grafiklerde yıllara göre değişim, fakültelere göre öğrenci yoğunluğu ve cinsiyet dağılımı görsel olarak değerlendirilmiştir.\</span>
+<span id="cb45-339"><a href="#cb45-339" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-340"><a href="#cb45-340" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Yıllara Göre Toplam Öğrenci Sayısı\</span>
+<span id="cb45-341"><a href="#cb45-341" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-342"><a href="#cb45-342" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, incelenen fakültelerdeki toplam öğrenci sayısının akademik yıllara göre nasıl değiştiğini göstermektedir.\</span>
+<span id="cb45-343"><a href="#cb45-343" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-344"><a href="#cb45-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-345"><a href="#cb45-345" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb45-346"><a href="#cb45-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-347"><a href="#cb45-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-350"><a href="#cb45-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-351"><a href="#cb45-351" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-yillara-gore-toplam</span></span>
+<span id="cb45-352"><a href="#cb45-352" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
+<span id="cb45-353"><a href="#cb45-353" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb45-354"><a href="#cb45-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-355"><a href="#cb45-355" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(yillik_toplam, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Toplam_Ogrenci, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb45-356"><a href="#cb45-356" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"#4472C4"</span>) <span class="sc">+</span></span>
+<span id="cb45-357"><a href="#cb45-357" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"#4472C4"</span>) <span class="sc">+</span></span>
+<span id="cb45-358"><a href="#cb45-358" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb45-359"><a href="#cb45-359" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">comma</span>(Toplam_Ogrenci)),</span>
+<span id="cb45-360"><a href="#cb45-360" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.8</span>,</span>
+<span id="cb45-361"><a href="#cb45-361" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
+<span id="cb45-362"><a href="#cb45-362" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-363"><a href="#cb45-363" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-364"><a href="#cb45-364" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Yıllara Gore Toplam Ogrenci Sayısı"</span>,</span>
+<span id="cb45-365"><a href="#cb45-365" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
+<span id="cb45-366"><a href="#cb45-366" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Toplam Ogrenci Sayısı"</span></span>
+<span id="cb45-367"><a href="#cb45-367" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-368"><a href="#cb45-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-369"><a href="#cb45-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-370"><a href="#cb45-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-371"><a href="#cb45-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-372"><a href="#cb45-372" aria-hidden="true" tabindex="-1"></a>Grafik incelendiğinde, toplam öğrenci sayısının yıllara göre değişim gösterdiği görülmektedir. Bu grafik, genel öğrenci yoğunluğunun hangi yıllarda arttığını veya azaldığını değerlendirmek için kullanılmıştır.\</span>
+<span id="cb45-373"><a href="#cb45-373" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-374"><a href="#cb45-374" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakültelere Göre Toplam Öğrenci Sayısı\</span>
+<span id="cb45-375"><a href="#cb45-375" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-376"><a href="#cb45-376" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, beş yıllık dönem boyunca fakültelerin toplam öğrenci sayılarını karşılaştırmaktadır.</span>
+<span id="cb45-377"><a href="#cb45-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-380"><a href="#cb45-380" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-381"><a href="#cb45-381" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-fakulte-toplam</span></span>
+<span id="cb45-382"><a href="#cb45-382" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
+<span id="cb45-383"><a href="#cb45-383" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb45-384"><a href="#cb45-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-385"><a href="#cb45-385" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fakulte_toplam, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Fakulte, Toplam_Ogrenci), <span class="at">y =</span> Toplam_Ogrenci)) <span class="sc">+</span></span>
+<span id="cb45-386"><a href="#cb45-386" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#70AD47"</span>) <span class="sc">+</span></span>
+<span id="cb45-387"><a href="#cb45-387" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">comma</span>(Toplam_Ogrenci)), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb45-388"><a href="#cb45-388" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb45-389"><a href="#cb45-389" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-390"><a href="#cb45-390" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere Gore Toplam Ogrenci Sayısı"</span>,</span>
+<span id="cb45-391"><a href="#cb45-391" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Fakulte"</span>,</span>
+<span id="cb45-392"><a href="#cb45-392" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Toplam Ogrenci Sayısı"</span></span>
+<span id="cb45-393"><a href="#cb45-393" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-394"><a href="#cb45-394" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-395"><a href="#cb45-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-396"><a href="#cb45-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-397"><a href="#cb45-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-398"><a href="#cb45-398" aria-hidden="true" tabindex="-1"></a>Bu grafik, öğrenci yoğunluğu bakımından hangi fakültelerin öne çıktığını göstermektedir. Eğitim, Sağlık ve Mühendislik fakülteleri toplam öğrenci sayısı bakımından yüksek değerlere sahiptir. Teknoloji Fakültesi ise diğer fakültelere göre daha düşük öğrenci sayısına sahiptir.\</span>
+<span id="cb45-399"><a href="#cb45-399" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-400"><a href="#cb45-400" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Yıllara Göre Kadın-Erkek Öğrenci Sayıları\</span>
+<span id="cb45-401"><a href="#cb45-401" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-402"><a href="#cb45-402" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, yıllara göre kadın ve erkek öğrenci sayılarının toplamını karşılaştırmaktadır.</span>
+<span id="cb45-403"><a href="#cb45-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-406"><a href="#cb45-406" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-407"><a href="#cb45-407" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-yil-cinsiyet</span></span>
+<span id="cb45-408"><a href="#cb45-408" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
+<span id="cb45-409"><a href="#cb45-409" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb45-410"><a href="#cb45-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-411"><a href="#cb45-411" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(yil_cinsiyet, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Toplam, <span class="at">color =</span> Cinsiyet, <span class="at">group =</span> Cinsiyet)) <span class="sc">+</span></span>
+<span id="cb45-412"><a href="#cb45-412" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb45-413"><a href="#cb45-413" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb45-414"><a href="#cb45-414" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">comma</span>(Toplam)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb45-415"><a href="#cb45-415" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-416"><a href="#cb45-416" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Yıllara Gore Kadın-Erkek Ogrenci Sayıları"</span>,</span>
+<span id="cb45-417"><a href="#cb45-417" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
+<span id="cb45-418"><a href="#cb45-418" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Ogrenci Sayısı"</span>,</span>
+<span id="cb45-419"><a href="#cb45-419" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Cinsiyet"</span></span>
+<span id="cb45-420"><a href="#cb45-420" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-421"><a href="#cb45-421" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb45-422"><a href="#cb45-422" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"ERKEK"</span> <span class="ot">=</span> <span class="st">"#4472C4"</span>, <span class="st">"KADIN"</span> <span class="ot">=</span> <span class="st">"#ED7D31"</span>)) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-423"><a href="#cb45-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-424"><a href="#cb45-424" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-425"><a href="#cb45-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-426"><a href="#cb45-426" aria-hidden="true" tabindex="-1"></a>Grafik incelendiğinde, kadın ve erkek öğrenci sayılarının yıllara göre farklı eğilimler gösterebildiği görülmektedir. Kadın ve erkek toplamlarının birlikte gösterilmesi, genel cinsiyet dağılımının yıllara göre değişimini daha net ortaya koymaktadır.\</span>
+<span id="cb45-427"><a href="#cb45-427" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-428"><a href="#cb45-428" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakültelere Göre Kadın-Erkek Dağılımı\</span>
+<span id="cb45-429"><a href="#cb45-429" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-430"><a href="#cb45-430" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, fakültelere göre kadın ve erkek öğrenci sayılarının toplamını göstermektedir.</span>
+<span id="cb45-431"><a href="#cb45-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-434"><a href="#cb45-434" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-435"><a href="#cb45-435" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-fakulte-cinsiyet</span></span>
+<span id="cb45-436"><a href="#cb45-436" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb45-437"><a href="#cb45-437" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb45-438"><a href="#cb45-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-439"><a href="#cb45-439" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fakulte_cinsiyet, <span class="fu">aes</span>(<span class="at">x =</span> Fakulte, <span class="at">y =</span> Toplam, <span class="at">fill =</span> Cinsiyet)) <span class="sc">+</span></span>
+<span id="cb45-440"><a href="#cb45-440" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb45-441"><a href="#cb45-441" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb45-442"><a href="#cb45-442" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-443"><a href="#cb45-443" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere Gore Kadın-Erkek Ogrenci Dağılımı"</span>,</span>
+<span id="cb45-444"><a href="#cb45-444" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Fakulte"</span>,</span>
+<span id="cb45-445"><a href="#cb45-445" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Ogrenci Sayısı"</span>,</span>
+<span id="cb45-446"><a href="#cb45-446" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Cinsiyet"</span></span>
+<span id="cb45-447"><a href="#cb45-447" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-448"><a href="#cb45-448" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb45-449"><a href="#cb45-449" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"ERKEK"</span> <span class="ot">=</span> <span class="st">"#4472C4"</span>, <span class="st">"KADIN"</span> <span class="ot">=</span> <span class="st">"#ED7D31"</span>)) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-450"><a href="#cb45-450" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-451"><a href="#cb45-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-452"><a href="#cb45-452" aria-hidden="true" tabindex="-1"></a>Bu grafik, fakülteler arasında cinsiyet dağılımı bakımından belirgin farklar olduğunu göstermektedir. Eğitim ve Sağlık fakültelerinde kadın öğrenci sayısı yüksekken, Mühendislik ve Teknoloji fakültelerinde erkek öğrenci sayısının daha yüksek olduğu görülmektedir.\</span>
+<span id="cb45-453"><a href="#cb45-453" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-454"><a href="#cb45-454" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakültelerde Kadın Öğrenci Oranı\</span>
+<span id="cb45-455"><a href="#cb45-455" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-456"><a href="#cb45-456" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, yıllara göre fakültelerdeki kadın öğrenci oranlarını göstermektedir.</span>
+<span id="cb45-457"><a href="#cb45-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-460"><a href="#cb45-460" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-461"><a href="#cb45-461" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-kadin-orani</span></span>
+<span id="cb45-462"><a href="#cb45-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb45-463"><a href="#cb45-463" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb45-464"><a href="#cb45-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-465"><a href="#cb45-465" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(oran_veri, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Kadin_Orani, <span class="at">color =</span> Fakulte, <span class="at">group =</span> Fakulte)) <span class="sc">+</span></span>
+<span id="cb45-466"><a href="#cb45-466" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb45-467"><a href="#cb45-467" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb45-468"><a href="#cb45-468" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-469"><a href="#cb45-469" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Yıllara Gore Fakultelerde Kadın Ogrenci Oranı"</span>,</span>
+<span id="cb45-470"><a href="#cb45-470" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
+<span id="cb45-471"><a href="#cb45-471" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Kadın Ogrenci Oranı (%)"</span>,</span>
+<span id="cb45-472"><a href="#cb45-472" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Fakulte"</span></span>
+<span id="cb45-473"><a href="#cb45-473" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-474"><a href="#cb45-474" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">"%"</span>)) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-475"><a href="#cb45-475" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-476"><a href="#cb45-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-477"><a href="#cb45-477" aria-hidden="true" tabindex="-1"></a>Kadın öğrenci oranları incelendiğinde, Eğitim ve Sağlık fakültelerinde kadın öğrencilerin daha yüksek oranda temsil edildiği görülmektedir. Buna karşılık Mühendislik ve Teknoloji fakültelerinde kadın öğrenci oranı daha düşüktür.\</span>
+<span id="cb45-478"><a href="#cb45-478" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-479"><a href="#cb45-479" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakültelerde Erkek Öğrenci Oranı\</span>
+<span id="cb45-480"><a href="#cb45-480" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-481"><a href="#cb45-481" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, yıllara göre fakültelerdeki erkek öğrenci oranlarını göstermektedir.</span>
+<span id="cb45-482"><a href="#cb45-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-485"><a href="#cb45-485" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-486"><a href="#cb45-486" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-erkek-orani</span></span>
+<span id="cb45-487"><a href="#cb45-487" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb45-488"><a href="#cb45-488" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb45-489"><a href="#cb45-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-490"><a href="#cb45-490" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(oran_veri, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Erkek_Orani, <span class="at">color =</span> Fakulte, <span class="at">group =</span> Fakulte)) <span class="sc">+</span></span>
+<span id="cb45-491"><a href="#cb45-491" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb45-492"><a href="#cb45-492" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb45-493"><a href="#cb45-493" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-494"><a href="#cb45-494" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Yıllara Gore Fakultelerde Erkek Ogrenci Oranı"</span>,</span>
+<span id="cb45-495"><a href="#cb45-495" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
+<span id="cb45-496"><a href="#cb45-496" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Erkek Ogrenci Oranı (%)"</span>,</span>
+<span id="cb45-497"><a href="#cb45-497" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Fakulte"</span></span>
+<span id="cb45-498"><a href="#cb45-498" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-499"><a href="#cb45-499" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">"%"</span>)) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-500"><a href="#cb45-500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-501"><a href="#cb45-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-502"><a href="#cb45-502" aria-hidden="true" tabindex="-1"></a>Erkek öğrenci oranları incelendiğinde, Mühendislik ve Teknoloji fakültelerinde erkek öğrencilerin daha baskın olduğu görülmektedir. Bu durum teknik alanlarda erkek öğrenci temsilinin daha yüksek olduğunu göstermektedir.\</span>
+<span id="cb45-503"><a href="#cb45-503" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-504"><a href="#cb45-504" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakülte Bazında Toplam Öğrenci Sayılarının Dağılımı\</span>
+<span id="cb45-505"><a href="#cb45-505" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-506"><a href="#cb45-506" aria-hidden="true" tabindex="-1"></a>Aşağıdaki boxplot grafiği, fakültelerin yıllara göre toplam öğrenci sayılarındaki dağılımını göstermektedir.</span>
+<span id="cb45-507"><a href="#cb45-507" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-510"><a href="#cb45-510" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-511"><a href="#cb45-511" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-boxplot</span></span>
+<span id="cb45-512"><a href="#cb45-512" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
+<span id="cb45-513"><a href="#cb45-513" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb45-514"><a href="#cb45-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-515"><a href="#cb45-515" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri_toplam, <span class="fu">aes</span>(<span class="at">x =</span> Fakulte, <span class="at">y =</span> Kisi_Sayisi, <span class="at">fill =</span> Fakulte)) <span class="sc">+</span></span>
+<span id="cb45-516"><a href="#cb45-516" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb45-517"><a href="#cb45-517" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb45-518"><a href="#cb45-518" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-519"><a href="#cb45-519" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere Gore Toplam Ogrenci Sayılarının Dağılımı"</span>,</span>
+<span id="cb45-520"><a href="#cb45-520" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Fakulte"</span>,</span>
+<span id="cb45-521"><a href="#cb45-521" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Toplam Ogrenci Sayısı"</span></span>
+<span id="cb45-522"><a href="#cb45-522" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-523"><a href="#cb45-523" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb45-524"><a href="#cb45-524" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb45-525"><a href="#cb45-525" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-526"><a href="#cb45-526" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-527"><a href="#cb45-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-528"><a href="#cb45-528" aria-hidden="true" tabindex="-1"></a>Boxplot grafiği, fakültelerin yıllara göre öğrenci sayılarının hangi aralıkta değiştiğini göstermektedir. Bu grafik, fakülteler arasında değişkenliğin daha kolay karşılaştırılmasını sağlar.\</span>
+<span id="cb45-529"><a href="#cb45-529" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-530"><a href="#cb45-530" aria-hidden="true" tabindex="-1"></a><span class="sc">\#</span># Fakülte ve Yıl Bazında Isı Haritası\</span>
+<span id="cb45-531"><a href="#cb45-531" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-532"><a href="#cb45-532" aria-hidden="true" tabindex="-1"></a>Aşağıdaki ısı haritası, fakülte ve yıl kesişimindeki toplam öğrenci sayılarını göstermektedir.</span>
+<span id="cb45-533"><a href="#cb45-533" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-536"><a href="#cb45-536" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-537"><a href="#cb45-537" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-isi-haritasi</span></span>
+<span id="cb45-538"><a href="#cb45-538" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb45-539"><a href="#cb45-539" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb45-540"><a href="#cb45-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-541"><a href="#cb45-541" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri_toplam, <span class="fu">aes</span>(<span class="at">x =</span> Yil, <span class="at">y =</span> Fakulte, <span class="at">fill =</span> Kisi_Sayisi)) <span class="sc">+</span></span>
+<span id="cb45-542"><a href="#cb45-542" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb45-543"><a href="#cb45-543" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">comma</span>(Kisi_Sayisi)), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb45-544"><a href="#cb45-544" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-545"><a href="#cb45-545" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere ve Yıllara Gore Toplam Ogrenci Sayısı Isı Haritası"</span>,</span>
+<span id="cb45-546"><a href="#cb45-546" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
+<span id="cb45-547"><a href="#cb45-547" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Fakulte"</span>,</span>
+<span id="cb45-548"><a href="#cb45-548" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Toplam"</span></span>
+<span id="cb45-549"><a href="#cb45-549" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-550"><a href="#cb45-550" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"#D9EAF7"</span>, <span class="at">high =</span> <span class="st">"#4472C4"</span>) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-551"><a href="#cb45-551" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-552"><a href="#cb45-552" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-553"><a href="#cb45-553" aria-hidden="true" tabindex="-1"></a>Isı haritası, hangi fakülte ve yıl kombinasyonlarında öğrenci yoğunluğunun daha yüksek olduğunu görsel olarak göstermektedir. Daha koyu renkler, daha yüksek öğrenci sayılarını ifade etmektedir.</span>
+<span id="cb45-554"><a href="#cb45-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-555"><a href="#cb45-555" aria-hidden="true" tabindex="-1"></a><span class="fu">## Trend Analizi</span></span>
+<span id="cb45-556"><a href="#cb45-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-557"><a href="#cb45-557" aria-hidden="true" tabindex="-1"></a>xxxxxx</span>
+<span id="cb45-558"><a href="#cb45-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-559"><a href="#cb45-559" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Uydurma</span></span>
+<span id="cb45-560"><a href="#cb45-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-561"><a href="#cb45-561" aria-hidden="true" tabindex="-1"></a>Bu projede temel amaç keşifsel veri analizi yapmak olsa da, yıllara göre toplam öğrenci sayısındaki eğilimi incelemek için basit doğrusal model kurulmuştur. Modelde bağımlı değişken toplam öğrenci sayısıdır. Bağımsız değişken ise akademik yılın sayısal karşılığıdır.\</span>
+<span id="cb45-562"><a href="#cb45-562" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-563"><a href="#cb45-563" aria-hidden="true" tabindex="-1"></a>Model genel olarak şu şekilde ifade edilebilir:\</span>
+<span id="cb45-564"><a href="#cb45-564" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-565"><a href="#cb45-565" aria-hidden="true" tabindex="-1"></a><span class="sc">\*\*</span>Toplam Öğrenci Sayısı = β0 + β1 × Yıl + ε<span class="sc">\*\*</span>\</span>
+<span id="cb45-566"><a href="#cb45-566" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-567"><a href="#cb45-567" aria-hidden="true" tabindex="-1"></a>Burada β1 katsayısı, yıllara göre toplam öğrenci sayısının artış veya azalış eğilimini göstermektedir. Katsayının pozitif olması artış eğilimini, negatif olması ise azalış eğilimini ifade eder.\</span>
+<span id="cb45-568"><a href="#cb45-568" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-569"><a href="#cb45-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-572"><a href="#cb45-572" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-573"><a href="#cb45-573" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-verisi</span></span>
+<span id="cb45-574"><a href="#cb45-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-575"><a href="#cb45-575" aria-hidden="true" tabindex="-1"></a>model_veri <span class="ot">&lt;-</span> veri_toplam <span class="sc">%&gt;%</span></span>
+<span id="cb45-576"><a href="#cb45-576" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb45-577"><a href="#cb45-577" aria-hidden="true" tabindex="-1"></a>    <span class="at">Yil_Sayi =</span> <span class="fu">as.numeric</span>(Yil)</span>
+<span id="cb45-578"><a href="#cb45-578" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-579"><a href="#cb45-579" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-580"><a href="#cb45-580" aria-hidden="true" tabindex="-1"></a>model_veri <span class="sc">%&gt;%</span></span>
+<span id="cb45-581"><a href="#cb45-581" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Yil, Yil_Sayi, Fakulte, Kisi_Sayisi) <span class="sc">%&gt;%</span></span>
+<span id="cb45-582"><a href="#cb45-582" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb45-583"><a href="#cb45-583" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-584"><a href="#cb45-584" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-585"><a href="#cb45-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-586"><a href="#cb45-586" aria-hidden="true" tabindex="-1"></a>Her fakülte için ayrı doğrusal model kurulmuştur.</span>
+<span id="cb45-587"><a href="#cb45-587" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-590"><a href="#cb45-590" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-591"><a href="#cb45-591" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-sonuclari</span></span>
+<span id="cb45-592"><a href="#cb45-592" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-593"><a href="#cb45-593" aria-hidden="true" tabindex="-1"></a>model_sonuclari <span class="ot">&lt;-</span> model_veri <span class="sc">%&gt;%</span></span>
+<span id="cb45-594"><a href="#cb45-594" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fakulte) <span class="sc">%&gt;%</span></span>
+<span id="cb45-595"><a href="#cb45-595" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">lm</span>(Kisi_Sayisi <span class="sc">~</span> Yil_Sayi, <span class="at">data =</span> .)))</span>
+<span id="cb45-596"><a href="#cb45-596" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-597"><a href="#cb45-597" aria-hidden="true" tabindex="-1"></a>model_sonuclari <span class="sc">%&gt;%</span></span>
+<span id="cb45-598"><a href="#cb45-598" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-599"><a href="#cb45-599" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-600"><a href="#cb45-600" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-601"><a href="#cb45-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-602"><a href="#cb45-602" aria-hidden="true" tabindex="-1"></a>Model sonuçlarının daha anlaşılır olması için yalnızca eğilim katsayıları aşağıda gösterilmiştir.</span>
+<span id="cb45-603"><a href="#cb45-603" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-606"><a href="#cb45-606" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-607"><a href="#cb45-607" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-egilim-katsayilari</span></span>
+<span id="cb45-608"><a href="#cb45-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-609"><a href="#cb45-609" aria-hidden="true" tabindex="-1"></a>egilim_sonuclari <span class="ot">&lt;-</span> model_sonuclari <span class="sc">%&gt;%</span></span>
+<span id="cb45-610"><a href="#cb45-610" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"Yil_Sayi"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-611"><a href="#cb45-611" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Fakulte, estimate, std.error, statistic, p.value) <span class="sc">%&gt;%</span></span>
+<span id="cb45-612"><a href="#cb45-612" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb45-613"><a href="#cb45-613" aria-hidden="true" tabindex="-1"></a>    <span class="at">Egilim_Katsayisi =</span> estimate,</span>
+<span id="cb45-614"><a href="#cb45-614" aria-hidden="true" tabindex="-1"></a>    <span class="at">Standart_Hata =</span> std.error,</span>
+<span id="cb45-615"><a href="#cb45-615" aria-hidden="true" tabindex="-1"></a>    <span class="at">Test_Istatistigi =</span> statistic,</span>
+<span id="cb45-616"><a href="#cb45-616" aria-hidden="true" tabindex="-1"></a>    <span class="at">P_Degeri =</span> p.value</span>
+<span id="cb45-617"><a href="#cb45-617" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-618"><a href="#cb45-618" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-619"><a href="#cb45-619" aria-hidden="true" tabindex="-1"></a>egilim_sonuclari <span class="sc">%&gt;%</span></span>
+<span id="cb45-620"><a href="#cb45-620" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb45-621"><a href="#cb45-621" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-622"><a href="#cb45-622" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-623"><a href="#cb45-623" aria-hidden="true" tabindex="-1"></a>Model sonuçlarına göre eğilim katsayısı negatif olan fakültelerde toplam öğrenci sayısının yıllar içinde azalma eğiliminde olduğu, pozitif olan fakültelerde ise artış eğilimi olduğu söylenebilir. Ancak veri seti yalnızca beş akademik yılı kapsadığı için bu modeller güçlü bir tahmin modeli olarak değil, genel eğilimi gösteren destekleyici analizler olarak değerlendirilmelidir.\</span>
+<span id="cb45-624"><a href="#cb45-624" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-625"><a href="#cb45-625" aria-hidden="true" tabindex="-1"></a>Aşağıdaki grafik, fakültelere göre toplam öğrenci sayısı ve doğrusal eğilim çizgisini göstermektedir.</span>
+<span id="cb45-626"><a href="#cb45-626" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-629"><a href="#cb45-629" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-630"><a href="#cb45-630" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafik-model-egilim</span></span>
+<span id="cb45-631"><a href="#cb45-631" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb45-632"><a href="#cb45-632" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb45-633"><a href="#cb45-633" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-634"><a href="#cb45-634" aria-hidden="true" tabindex="-1"></a>model_veri <span class="ot">&lt;-</span> veri_toplam <span class="sc">%&gt;%</span></span>
+<span id="cb45-635"><a href="#cb45-635" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb45-636"><a href="#cb45-636" aria-hidden="true" tabindex="-1"></a>    <span class="at">Yil_Sayi =</span> <span class="fu">as.numeric</span>(Yil)</span>
+<span id="cb45-637"><a href="#cb45-637" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-638"><a href="#cb45-638" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-639"><a href="#cb45-639" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(model_veri, <span class="fu">aes</span>(<span class="at">x =</span> Yil_Sayi, <span class="at">y =</span> Kisi_Sayisi, <span class="at">color =</span> Fakulte)) <span class="sc">+</span></span>
+<span id="cb45-640"><a href="#cb45-640" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb45-641"><a href="#cb45-641" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb45-642"><a href="#cb45-642" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb45-643"><a href="#cb45-643" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb45-644"><a href="#cb45-644" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">levels</span>(model_veri<span class="sc">$</span>Yil)</span>
+<span id="cb45-645"><a href="#cb45-645" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-646"><a href="#cb45-646" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-647"><a href="#cb45-647" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fakultelere Gore Toplam Ogrenci Sayısı Egilim Modeli"</span>,</span>
+<span id="cb45-648"><a href="#cb45-648" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Akademik Yıl"</span>,</span>
+<span id="cb45-649"><a href="#cb45-649" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Toplam Ogrenci Sayısı"</span>,</span>
+<span id="cb45-650"><a href="#cb45-650" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Fakulte"</span></span>
+<span id="cb45-651"><a href="#cb45-651" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-652"><a href="#cb45-652" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-653"><a href="#cb45-653" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-654"><a href="#cb45-654" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-655"><a href="#cb45-655" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sonuçlar</span></span>
+<span id="cb45-656"><a href="#cb45-656" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-657"><a href="#cb45-657" aria-hidden="true" tabindex="-1"></a>Bu çalışmada 2020-2021 ile 2024-2025 akademik yılları arasında seçilmiş beş fakültedeki kadın ve erkek öğrenci sayıları analiz edilmiştir. Analiz sonucunda fakülteler arasında hem toplam öğrenci sayısı hem de cinsiyet dağılımı açısından belirgin farklılıklar olduğu görülmüştür.\</span>
+<span id="cb45-658"><a href="#cb45-658" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-659"><a href="#cb45-659" aria-hidden="true" tabindex="-1"></a>Genel bulgulara göre Eğitim Fakültesi, Sağlık Fakültesi ve Mühendislik Fakültesi öğrenci yoğunluğu bakımından öne çıkmaktadır. Teknoloji Fakültesi ise incelenen fakülteler arasında en düşük toplam öğrenci sayısına sahip fakültedir.\</span>
+<span id="cb45-660"><a href="#cb45-660" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-661"><a href="#cb45-661" aria-hidden="true" tabindex="-1"></a>Cinsiyet dağılımı açısından değerlendirildiğinde, Eğitim Fakültesi ve Sağlık Fakültesi’nde kadın öğrencilerin daha yüksek oranda temsil edildiği görülmektedir. Buna karşılık Mühendislik Fakültesi ve Teknoloji Fakültesi’nde erkek öğrenci oranı daha yüksektir. Bu durum, fakülte türlerine göre öğrenci tercihlerinin ve alan yönelimlerinin farklılaştığını göstermektedir.\</span>
+<span id="cb45-662"><a href="#cb45-662" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-663"><a href="#cb45-663" aria-hidden="true" tabindex="-1"></a>İktisadi ve İdari Bilimler Fakültesi’nde kadın ve erkek öğrenci sayılarının bazı yıllarda birbirine daha yakın olduğu görülmüştür. Bu fakülte, cinsiyet dağılımı açısından diğer fakültelere göre daha dengeli bir yapı sergilemektedir.\</span>
+<span id="cb45-664"><a href="#cb45-664" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-665"><a href="#cb45-665" aria-hidden="true" tabindex="-1"></a>Model uydurma aşamasında kurulan basit doğrusal modeller, fakültelerdeki toplam öğrenci sayılarının yıllara göre genel eğilimini incelemek amacıyla kullanılmıştır. Ancak veri seti yalnızca beş yıllık dönemden oluştuğu için model sonuçları uzun dönemli tahmin amacıyla değil, eğilimi destekleyici bir analiz olarak değerlendirilmelidir.\</span>
+<span id="cb45-666"><a href="#cb45-666" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb45-667"><a href="#cb45-667" aria-hidden="true" tabindex="-1"></a>Sonuç olarak bu proje, fakültelere göre kadın ve erkek öğrenci dağılımını anlamak için yararlı bir analiz sunmaktadır. Elde edilen bulgular, yükseköğretimde fakülte türlerine göre cinsiyet dağılımının farklılaştığını göstermektedir. Daha kapsamlı bir çalışma için ilerleyen aşamalarda daha fazla fakülte, daha uzun yıllık veri ve farklı üniversitelerden elde edilen bilgiler analize dahil edilebilir.</span>
+<span id="cb45-668"><a href="#cb45-668" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-671"><a href="#cb45-671" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-672"><a href="#cb45-672" aria-hidden="true" tabindex="-1"></a>final_ozet <span class="ot">&lt;-</span> veri_genis <span class="sc">%&gt;%</span></span>
+<span id="cb45-673"><a href="#cb45-673" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fakulte) <span class="sc">%&gt;%</span></span>
+<span id="cb45-674"><a href="#cb45-674" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb45-675"><a href="#cb45-675" aria-hidden="true" tabindex="-1"></a>    <span class="at">Toplam_Erkek =</span> <span class="fu">sum</span>(Erkek, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb45-676"><a href="#cb45-676" aria-hidden="true" tabindex="-1"></a>    <span class="at">Toplam_Kadin =</span> <span class="fu">sum</span>(Kadin, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb45-677"><a href="#cb45-677" aria-hidden="true" tabindex="-1"></a>    <span class="at">Genel_Toplam =</span> <span class="fu">sum</span>(Toplam, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb45-678"><a href="#cb45-678" aria-hidden="true" tabindex="-1"></a>    <span class="at">Kadin_Orani =</span> <span class="fu">round</span>(Toplam_Kadin <span class="sc">/</span> Genel_Toplam <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>),</span>
+<span id="cb45-679"><a href="#cb45-679" aria-hidden="true" tabindex="-1"></a>    <span class="at">Erkek_Orani =</span> <span class="fu">round</span>(Toplam_Erkek <span class="sc">/</span> Genel_Toplam <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>),</span>
+<span id="cb45-680"><a href="#cb45-680" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb45-681"><a href="#cb45-681" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb45-682"><a href="#cb45-682" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Genel_Toplam))</span>
+<span id="cb45-683"><a href="#cb45-683" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-684"><a href="#cb45-684" aria-hidden="true" tabindex="-1"></a>final_ozet <span class="sc">%&gt;%</span></span>
+<span id="cb45-685"><a href="#cb45-685" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span>
+<span id="cb45-686"><a href="#cb45-686" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-687"><a href="#cb45-687" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-688"><a href="#cb45-688" aria-hidden="true" tabindex="-1"></a><span class="fu"># Sonuçlar ve Ana Çıkarımlar</span></span>
+<span id="cb45-689"><a href="#cb45-689" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-690"><a href="#cb45-690" aria-hidden="true" tabindex="-1"></a>xxxxxx</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
